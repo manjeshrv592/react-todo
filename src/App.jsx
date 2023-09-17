@@ -9,7 +9,13 @@ const App = () => {
     setTodos(todos => [...todos, newTodo]);
   };
 
-  const handleDelete = id => {
+  const handleEditTodo = (id, description) => {
+    setTodos(todos =>
+      todos.map(todo => (todo.id === id ? { ...todo, description } : todo))
+    );
+  };
+
+  const handleDeleteTodo = id => {
     setTodos(todos => todos.filter(todo => todo.id !== id));
   };
 
@@ -26,8 +32,9 @@ const App = () => {
       <NewTodoForm onAddTodo={handleAddTodo} />
       <Todos
         todos={todos}
-        onDelete={handleDelete}
+        onDeleteTodo={handleDeleteTodo}
         onToggleTodo={handleToggleTodo}
+        onEditTodo={handleEditTodo}
       />
     </article>
   );

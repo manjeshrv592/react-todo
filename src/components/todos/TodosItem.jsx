@@ -1,31 +1,41 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import EditTodoForm from '../forms/EditTodoForm';
 
-const TodosItem = ({ todo, onToggleTodo, onDelete }) => {
-  const [showEditForm, setShowEditForm] = useState(false);
+const TodosItem = ({ todo, onToggleTodo, onDeleteTodo, onEditTodo }) => {
+  const [toggleEdit, setToggleEdit] = useState(false);
 
-  const handleShowEditForm = () => {
-    setShowEditForm(prevState => !prevState);
+  const handleToggleEdit = () => {
+    setToggleEdit(toggleEdit => !toggleEdit);
   };
 
   return (
     <li className={`todos-item ${todo.completed ? 'completed' : ''}`}>
-      <input
-        type='checkbox'
-        checked={todo.completed}
-        onChange={() => onToggleTodo(todo.id)}
-      />
+      {!toggleEdit ? (
+        <>
+          <input
+            type='checkbox'
+            checked={todo.completed}
+            onChange={() => onToggleTodo(todo.id)}
+          />
 
-      {showEditForm ? <EditTodoForm /> : <p>{todo.description}</p>}
+          <p>{todo.description}</p>
 
-      <div className='todos-actions'>
-        <button onClick={handleShowEditForm}>
-          <i className='fa-solid fa-pen-to-square'></i>
-        </button>
-        <button onClick={() => onDelete(todo.id)}>
-          <i className='fa-solid fa-trash-can'></i>
-        </button>
-      </div>
+          <div className='todos-actions'>
+            <button onClick={handleToggleEdit}>
+              <i className='fa-solid fa-pen-to-square'></i>
+            </button>
+            <button onClick={() => onDeleteTodo(todo.id)}>
+              <i className='fa-solid fa-trash-can'></i>
+            </button>
+          </div>
+        </>
+      ) : (
+        <EditTodoForm
+          todo={todo}
+          onToggleEdit={handleToggleEdit}
+          onEditTodo={onEditTodo}
+        />
+      )}
     </li>
   );
 };

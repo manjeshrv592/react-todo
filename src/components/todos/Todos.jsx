@@ -1,7 +1,13 @@
 import React from 'react';
 import TodosItem from './TodosItem';
 
-const Todos = ({ todos, onDelete, onToggleTodo }) => {
+const Todos = ({
+  todos,
+  onDeleteTodo,
+  onToggleTodo,
+  onToggleEdit,
+  onEditTodo,
+}) => {
   return (
     <ul className='todos'>
       {todos.map(todo => (
@@ -9,7 +15,9 @@ const Todos = ({ todos, onDelete, onToggleTodo }) => {
           key={todo.id}
           todo={todo}
           onToggleTodo={onToggleTodo}
-          onDelete={onDelete}
+          onDeleteTodo={onDeleteTodo}
+          onEditTodo={onEditTodo}
+          onToggleEdit={onToggleEdit}
         />
       ))}
     </ul>
