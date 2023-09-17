@@ -2,10 +2,11 @@
 :root {
   /* Colors */
   --white: #fff;
+  --grey-light: #bdbdbd;
   --grey: #616161;
   --blue-light: #eef2fc;
-  --blue: #6387e3;
-  --blue-dark: #2f5fda;
+  --blue: #7495e7;
+  --blue-dark: #406ddd;
 
   /* Fonts */
   --body-font: 'Poppins', sans-serif;
@@ -39,9 +40,58 @@ body {
 .card {
   background-color: var(--white);
   border-radius: 1.6rem;
-  padding: 1.6rem;
+
   width: 100%;
   max-width: 64rem;
+}
+
+.new-todo-form {
+  display: flex;
+  padding: 3.2rem;
+}
+
+.input {
+  font-family: inherit;
+  font-weight: 400;
+  color: inherit;
+  border-radius: 10rem;
+  padding: 1.2rem 3.2rem;
+  font-size: 1.6rem;
+  border: 2px solid var(--grey-light);
+  flex: 1;
+  margin-right: 2rem;
+}
+
+.input:focus {
+  outline: none;
+}
+.input::placeholder {
+  color: var(--grey-light);
+}
+
+.btn {
+  font-family: inherit;
+  font-weight: 600;
+  color: inherit;
+  border-radius: 10rem;
+  border: 0;
+  padding: 1.2rem 3.2rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  color: var(--white);
+  background-image: linear-gradient(to right, var(--blue), var(--blue-dark));
 }
 
 /*********************************/
