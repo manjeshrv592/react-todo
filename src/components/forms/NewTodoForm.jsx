@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-const NewTodoForm = () => {
+const NewTodoForm = ({ onAddTodo }) => {
   const [description, setDescription] = useState('');
 
   const handleSubmit = e => {
@@ -15,7 +15,7 @@ const NewTodoForm = () => {
 
     const newTodo = { id: newId, description, completed: false };
 
-    console.log(newTodo);
+    onAddTodo(newTodo);
 
     // Clear input field
     setDescription('');
