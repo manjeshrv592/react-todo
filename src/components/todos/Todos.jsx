@@ -1,23 +1,16 @@
 import React from 'react';
-import TodosItem from './TodosItem';
+import Todo from './Todo';
 
-const Todos = ({
-  todos,
-  onDeleteTodo,
-  onToggleTodo,
-  onToggleEdit,
-  onEditTodo,
-}) => {
+const Todos = ({ todos, onDeleteTodo, onToggleTodo, onEditTodo }) => {
   return (
     <ul className='todos'>
       {todos.map(todo => (
-        <TodosItem
+        <Todo
           key={todo.id}
           todo={todo}
-          onToggleTodo={onToggleTodo}
-          onDeleteTodo={onDeleteTodo}
           onEditTodo={onEditTodo}
-          onToggleEdit={onToggleEdit}
+          onDeleteTodo={onDeleteTodo}
+          onToggleTodo={onToggleTodo}
         />
       ))}
     </ul>

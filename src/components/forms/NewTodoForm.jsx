@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const NewTodoForm = ({ onAddTodo }) => {
+  // Todo value
   const [description, setDescription] = useState('');
 
   const handleSubmit = e => {
@@ -13,8 +14,10 @@ const NewTodoForm = ({ onAddTodo }) => {
     // Generate unique ID
     const newId = uuidv4();
 
+    // Create new Todo object
     const newTodo = { id: newId, description, completed: false };
 
+    // Call new Todo function
     onAddTodo(newTodo);
 
     // Clear input field

@@ -1,11 +1,14 @@
 import { useState } from 'react';
 
-const EditTodoForm = ({ onToggleEdit, todo, onEditTodo }) => {
+const EditTodoForm = ({ todo, onEditTodo, onToggleEdit }) => {
+  // State for updated description value
   const [description, setDescription] = useState(todo.description);
 
   const handleSubmit = e => {
     e.preventDefault();
     onEditTodo(todo.id, description);
+
+    // Close form after update
     onToggleEdit();
   };
 
