@@ -21,11 +21,15 @@ const EditTodoForm = ({ todo, onEditTodo, onToggleEdit }) => {
           value={description}
           onChange={e => setDescription(e.target.value)}
         />
-        <button className='btn btn-primary btn-sm'>Update Todo</button>
+        <div>
+          <button type='submit' className='btn btn-primary btn-sm'>
+            Update Todo
+          </button>
+          <button type='button' className='btn  btn-sm' onClick={onToggleEdit}>
+            Cancel
+          </button>
+        </div>
       </form>
-      <button className='btn  btn-sm' onClick={onToggleEdit}>
-        Cancel
-      </button>
     </>
   );
 };

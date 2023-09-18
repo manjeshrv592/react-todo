@@ -52,12 +52,41 @@ input[type='checkbox'] {
 
 .new-todo-form {
   display: flex;
+  flex-direction: column;
   padding: 3.2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+@media (min-width: 576px) {
+  .new-todo-form {
+    flex-direction: row;
+    align-items: stretch;
+  }
 }
 
 .edit-todo-form {
   width: 100%;
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.edit-todo-form div {
+  display: flex;
+  height: 3.6rem;
+  gap: 2rem;
+}
+
+@media (min-width: 576px) {
+  .edit-todo-form {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .edit-todo-form div {
+    height: auto;
+  }
 }
 
 .input {
@@ -68,8 +97,23 @@ input[type='checkbox'] {
   padding: 1.2rem 3.2rem;
   font-size: 1.6rem;
   border: 2px solid var(--grey-light-2);
+  width: 100%;
   flex: 1;
-  margin-right: 2rem;
+}
+
+.input-sm {
+  padding: 0.6rem 1.6rem;
+  font-size: 1.4rem;
+}
+
+.new-todo-form .input {
+  margin-bottom: 1rem;
+}
+@media (min-width: 576px) {
+  .new-todo-form .input {
+    margin-bottom: 0;
+    margin-right: 2rem;
+  }
 }
 
 .input {
@@ -94,6 +138,7 @@ input[type='checkbox'] {
   font-size: 1.6rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  line-height: 1;
 }
 
 .btn-sm {
@@ -150,6 +195,13 @@ input[type='checkbox'] {
 .todos-item:hover .todos-actions {
   visibility: visible;
   opacity: 1;
+}
+
+@media only screen and (hover: none) {
+  .todos-actions {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .todos-actions button {
